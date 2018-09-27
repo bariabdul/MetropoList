@@ -8,13 +8,15 @@
 
 import UIKit
 
-class CitiesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CitiesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource /*UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate*/ {
     
     @IBOutlet weak var tableView: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let searchController = UISearchController(searchResultsController: nil)
+        search
         tableView.delegate = self
         tableView.dataSource = self
         self.tableView.rowHeight = 75
@@ -24,6 +26,11 @@ class CitiesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         CityService.instance.cities.sort(by: { $0.cityName < $1.cityName })
             self.tableView.reloadData()
         //}
+//        if text.contains("T") {
+//            print("true")
+//        } else {
+//            print("false")
+//        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,11 +53,14 @@ class CitiesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         performSegue(withIdentifier: "toMapView", sender: indexPath)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let barBtn = UIBarButtonItem()
-//        barBtn.title = ""
-        //navigationItem. = barBtn
-        //= "Hello"
+//    func updateSearchResults(for searchController: UISearchController) {
+//        <#code#>
+//    }
+}
+
+extension CitiesViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        <#code#>
     }
 }
 

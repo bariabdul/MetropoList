@@ -9,12 +9,26 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
 
+    @IBOutlet weak var mapView: MKMapView!
+    
+    fileprivate var annotation: MKAnnotation!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = MapService.instance.getLocationData().cityName
+        
+        mapView.delegate = self
+        mapView.mapType = .standard
         // Do any additional setup after loading the view.
+        
+        let pointAnnotation = MKPointAnnotation()
+        pointAnnotation.title = MapService.instance.getLocationData().cityName//item.1["name"].stringValue
+        pointAnnotation.coordinate = CLLocationCoordinate2DMake(MapService.instance.getLocationData().cityLatitude, MapService.instance.getLocationData().cityLongitude)
+        
+        let pinAnnotationView = MKPinAnnotationView(annotation: pointAnnotation, reuseIdentifier: nil)
+        self.mapView.centerCoordinate = pointAnnotation.coordinate
+        self.mapView.addAnnotation(pinAnnotationView.annotation!)
     }
     
 

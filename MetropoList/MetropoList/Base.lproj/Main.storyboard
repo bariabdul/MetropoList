@@ -105,6 +105,9 @@
                         <viewLayoutGuide key="safeArea" id="VF7-5U-bSe"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" largeTitleDisplayMode="never" id="OW1-3v-Fx7"/>
+                    <connections>
+                        <outlet property="mapView" destination="e7I-tQ-mWN" id="eJE-A3-HCN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A0d-bW-JiP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
