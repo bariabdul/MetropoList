@@ -26,7 +26,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to the list of cities!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIf-Gv-5t6">
                                 <rect key="frame" x="0.0" y="623" width="375" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MetropoList" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ers-XH-6F9">
@@ -35,7 +34,15 @@
                                     <constraint firstAttribute="height" constant="50" id="ceH-IV-KJB"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="38"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading. . ." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPI-QN-1Jn">
+                                <rect key="frame" x="16" y="598" width="343" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="ukg-7k-vKm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -43,13 +50,16 @@
                         <constraints>
                             <constraint firstItem="Ers-XH-6F9" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="4QQ-Fx-oTy"/>
                             <constraint firstItem="Ers-XH-6F9" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="5SL-bL-MA5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DPI-QN-1Jn" secondAttribute="trailing" id="5hU-7N-CLT"/>
                             <constraint firstItem="Dv7-QQ-Vei" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailing" id="9bI-fF-fz5"/>
                             <constraint firstItem="Dv7-QQ-Vei" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Dk7-wx-iAM"/>
                             <constraint firstAttribute="bottom" secondItem="Dv7-QQ-Vei" secondAttribute="bottom" id="JWk-Kd-LgC"/>
+                            <constraint firstItem="jIf-Gv-5t6" firstAttribute="top" secondItem="DPI-QN-1Jn" secondAttribute="bottom" constant="5" id="XgJ-yD-NhS"/>
                             <constraint firstItem="jIf-Gv-5t6" firstAttribute="leading" secondItem="Dv7-QQ-Vei" secondAttribute="leading" id="eGv-4W-Vgq"/>
                             <constraint firstItem="GyC-oP-D2k" firstAttribute="top" secondItem="jIf-Gv-5t6" secondAttribute="bottom" constant="20" id="hY6-ek-14r"/>
                             <constraint firstItem="Dv7-QQ-Vei" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="kbe-3m-gx4"/>
                             <constraint firstItem="jIf-Gv-5t6" firstAttribute="trailing" secondItem="Dv7-QQ-Vei" secondAttribute="trailing" id="oNd-8U-Wmi"/>
+                            <constraint firstItem="DPI-QN-1Jn" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="rxq-hJ-JX3"/>
                         </constraints>
                     </view>
                 </viewController>

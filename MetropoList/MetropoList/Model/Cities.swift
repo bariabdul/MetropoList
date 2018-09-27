@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+struct Cities {
+    private(set) public var cityName: String
+    private(set) public var countryName: String
+    private(set) public var cityLatitude: Double
+    private(set) public var cityLongitude: Double
+    
+    init(cityName: String, countryName: String, cityLatitude: Double, cityLongitude: Double) {
+        self.cityName = cityName
+        self.countryName = countryName
+        self.cityLatitude = cityLatitude
+        self.cityLongitude = cityLongitude
+    }
+}

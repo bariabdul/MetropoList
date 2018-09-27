@@ -11,23 +11,25 @@ import UIKit
 class CitiesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    
     var lati = 0.0, long = 0.0
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        //self.getData()
+        //cityLabel.text =
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.getData()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        self.getData()
+//    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return CityListCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cityCell") as! CityListCell
+        return cell
     }
     
     func getData() {
@@ -54,34 +56,34 @@ class CitiesViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //            }
 //        }
         
-        if let path = Bundle.main.path(forResource: "cities", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-                guard let jsonArray = jsonResult as? [[String: Any]] else {
-                    return//, let city = jsonResult["country"] as? [Any] {
-                    //print(city)
-                }
-                //print(jsonArray)
-                for dic in jsonArray {
-                    guard let country = dic["country"] as? String else { return }
-                    guard let city = dic["name"] as? String else { return }
-                    //guard let coord = dic["coord"]
-                    if let coord = dic["coord"] as? [String: Any] {
-                        let lat = coord["lat"] as? Double
-                        let lon = coord["lon"] as? Double
-                        lati = lat ?? 0.0
-                        long = lon ?? 0.0
-                        
-                    }
-                    print("\(city), \(country), coordinates are \(lati) and \(long)")
-                }
-                
-                //for coord in
-            } catch {
-                
-            }
-    }
+//        if let path = Bundle.main.path(forResource: "cities", ofType: "json") {
+//            do {
+//                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+//                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+//                guard let jsonArray = jsonResult as? [[String: Any]] else {
+//                    return//, let city = jsonResult["country"] as? [Any] {
+//                    //print(city)
+//                }
+//                //print(jsonArray)
+//                for dic in jsonArray {
+//                    guard let country = dic["country"] as? String else { return }
+//                    guard let city = dic["name"] as? String else { return }
+//                    //guard let coord = dic["coord"]
+//                    if let coord = dic["coord"] as? [String: Any] {
+//                        let lat = coord["lat"] as? Double
+//                        let lon = coord["lon"] as? Double
+//                        lati = lat ?? 0.0
+//                        long = lon ?? 0.0
+//
+//                    }
+//                    print("\(city), \(country), coordinates are \(lati) and \(long)")
+//                }
+//
+//                //for coord in
+//            } catch {
+//
+//            }
+//    }
 }
 }
 

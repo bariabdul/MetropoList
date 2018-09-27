@@ -59,6 +59,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="cityLabel" destination="9bZ-qw-nP2" id="AUh-do-ZJp"/>
                                             <segue destination="hqo-LF-Ssc" kind="show" id="AAm-oz-TcV"/>
                                         </connections>
                                     </tableViewCell>
@@ -70,6 +71,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="MetropoList" id="Gqg-kU-maf"/>
                     <connections>
+                        <outlet property="cityLabel" destination="9bZ-qw-nP2" id="2xi-Kk-TkO"/>
                         <outlet property="tableView" destination="4Dz-L3-zUg" id="v6y-m3-8cQ"/>
                     </connections>
                 </viewController>
