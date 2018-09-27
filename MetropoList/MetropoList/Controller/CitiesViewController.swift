@@ -12,11 +12,19 @@ class CitiesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var tableView: UITableView!
 
+    var filteredCities = [Cities]()
+    let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let searchController = UISearchController(searchResultsController: nil)
-        search
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search cities"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
         tableView.delegate = self
         tableView.dataSource = self
         self.tableView.rowHeight = 75
@@ -34,12 +42,21 @@ class CitiesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering() {
+            return filteredCities.count
+        }
         return CityService.instance.getCities().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cityCell") as? CityListCell {
-         let city = CityService.instance.getCities()[indexPath.row]
+            let city: Cities
+            if isFiltering() {
+                city = filteredCities[indexPath.row]
+            } else {
+                city = CityService.instance.getCities()[indexPath.row]
+            }
+            //let city = CityService.instance.getCities()[indexPath.row]
             cell.updateViews(city: city)
             return cell
         } else {
@@ -49,18 +66,39 @@ class CitiesViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //MapService.instance.setID(id: CityService.instance.getCities()[indexPath.row].cityId)
-        MapService.instance.setLocationData(city: CityService.instance.getCities()[indexPath.row])
+//        if searchController.searchBar.text == "" {
+//            MapService.instance.setLocationData(city: CityService.instance.getCities()[indexPath.row])
+//        } else {
+//            MapService.instance.setLocationData(city: filteredCities[indexPath.row])
+//        }
+        
+        if !isFiltering() {
+                        MapService.instance.setLocationData(city: CityService.instance.getCities()[indexPath.row])
+                    } else {
+                        MapService.instance.setLocationData(city: filteredCities[indexPath.row])
+                    }
         performSegue(withIdentifier: "toMapView", sender: indexPath)
     }
     
-//    func updateSearchResults(for searchController: UISearchController) {
-//        <#code#>
-//    }
+    func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentsForSearchText(_ searchText: String, scope: String = "All") {
+        filteredCities = CityService.instance.getCities().filter({( city: Cities) -> Bool in
+            return city.cityName.lowercased().contains(searchText.lowercased())
+        })
+        tableView.reloadData()
+    }
+    
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
 }
 
 extension CitiesViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        <#code#>
+        filterContentsForSearchText(searchController.searchBar.text!)
     }
 }
 
