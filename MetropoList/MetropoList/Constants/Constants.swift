@@ -8,4 +8,5 @@
 
 import Foundation
 
+//in case if completion handlers are used
 typealias CompletionHandler = (_ Success: Bool) -> ()
