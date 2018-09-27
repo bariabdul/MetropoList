@@ -13,7 +13,7 @@ class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.title = MapService.instance.getLocationData().cityName
         // Do any additional setup after loading the view.
     }
     

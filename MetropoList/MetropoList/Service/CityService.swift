@@ -12,14 +12,15 @@ class CityService {
     static let instance = CityService()
     
     var cities = [
-        Cities(cityName: "", countryName: "", cityLatitude: 0, cityLongitude: 0)
+        Cities(cityId: "", cityName: "", countryName: "", cityLatitude: 0, cityLongitude: 0)
     ]
     
     func getCities() -> [Cities] {
         return cities
     }
     
-    func fetchCities() {
+    func fetchCities(/*completion: @escaping CompletionHandler*/) {
+        self.cities.removeAll()
         if let path = Bundle.main.path(forResource: "cities", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
@@ -29,6 +30,10 @@ class CityService {
                 }
                 
                 for listOfCities in jsonArray {
+                    //print(listOfCities["_id"] as? String)
+                    //guard let id = listOfCities["_id"] as? String else { return }
+                    let id: String = "\(listOfCities["_id"] ?? 0)"
+                    //let id = String(id1)
                     guard let country = listOfCities["country"] as? String else { return }
                     guard let city = listOfCities["name"] as? String else { return }
                     
@@ -36,12 +41,20 @@ class CityService {
                         let latitude = coordinates["lat"] as? Double
                         let longitude = coordinates["lon"] as? Double
                         
-                        self.cities.append(Cities(cityName: city, countryName: country, cityLatitude: latitude ?? 0.0, cityLongitude: longitude ?? 0.0))
+                        self.cities.append(Cities(cityId: id, cityName: city, countryName: country, cityLatitude: latitude ?? 0.0, cityLongitude: longitude ?? 0.0))
+                        //UserDetailService.instance.userDetails.sort(by: { $0.userTitle > $1.userTitle })
+                        //print("Before Sort")
+                        //self.cities.sort(by: { $0.cityName > $1.cityName })
+                        //print("After sort")
                     }
                 }
-            } catch {
+                //completion(true)
+            }
+            catch {
                 print("Error appending the array of cities.")
             }
+            //completion(true)
         }
+        //completion(true)
     }
 }

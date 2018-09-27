@@ -21,5 +21,9 @@ class CityListCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func updateViews(city: Cities) {
+        cityLabel.text = "\(city.cityName), \(city.countryName)"
+    }
 
 }

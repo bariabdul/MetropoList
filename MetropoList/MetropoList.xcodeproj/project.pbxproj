@@ -20,6 +20,8 @@
 		28428E8D215C1654004FBB0A /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28428E8C215C1654004FBB0A /* Cities.swift */; };
 		28428E8F215C2EDE004FBB0A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28428E8E215C2EDE004FBB0A /* MapViewController.swift */; };
 		28428E91215C4BAF004FBB0A /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 28428E90215C4BAE004FBB0A /* cities.json */; };
+		28428E93215C830F004FBB0A /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28428E92215C830F004FBB0A /* MapService.swift */; };
+		28428E95215C8390004FBB0A /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28428E94215C8390004FBB0A /* Map.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		28428E8C215C1654004FBB0A /* Cities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
 		28428E8E215C2EDE004FBB0A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		28428E90215C4BAE004FBB0A /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
+		28428E92215C830F004FBB0A /* MapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
+		28428E94215C8390004FBB0A /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				28428E86215C160C004FBB0A /* CityService.swift */,
+				28428E92215C830F004FBB0A /* MapService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -111,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				28428E8C215C1654004FBB0A /* Cities.swift */,
+				28428E94215C8390004FBB0A /* Map.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,10 +218,12 @@
 			files = (
 				28428E8D215C1654004FBB0A /* Cities.swift in Sources */,
 				28428E8B215C1642004FBB0A /* CityListCell.swift in Sources */,
+				28428E93215C830F004FBB0A /* MapService.swift in Sources */,
 				28428E69215C0B18004FBB0A /* CitiesViewController.swift in Sources */,
 				28428E87215C160C004FBB0A /* CityService.swift in Sources */,
 				28428E67215C0B18004FBB0A /* AppDelegate.swift in Sources */,
 				28428E89215C161D004FBB0A /* Constants.swift in Sources */,
+				28428E95215C8390004FBB0A /* Map.swift in Sources */,
 				28428E8F215C2EDE004FBB0A /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +373,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 273522GWR3;
 				INFOPLIST_FILE = MetropoList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,6 +392,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 273522GWR3;
 				INFOPLIST_FILE = MetropoList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
